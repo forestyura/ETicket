@@ -18,7 +18,6 @@ public class TicketController {
 
     @RequestMapping(value = "/addTicket", method = RequestMethod.POST)
     public long addTicket(@RequestBody Ticket ticket) {
-        System.out.println(ticket.getExpiryDate());
         return ticketService.addTicket(ticket);
     }
 
