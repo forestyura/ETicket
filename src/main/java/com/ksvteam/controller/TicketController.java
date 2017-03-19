@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -56,5 +57,10 @@ public class TicketController {
         ticketService.editTicket(ticket);
         return ResponseEntity.ok("Ticket ok");
 
+    }
+
+    @RequestMapping(value = "/getAllTicket", method = RequestMethod.GET)
+    public ArrayList<Ticket> getAllTicket() {
+        return ticketService.getAllTicket();
     }
 }

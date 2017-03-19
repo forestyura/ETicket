@@ -2,7 +2,9 @@ package com.ksvteam.service;
 
 import com.ksvteam.entity.Ticket;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Yuriy Vlasiuk on 19.03.2017.
@@ -39,5 +41,9 @@ public class TicketService {
 
     public void editTicket(Ticket ticket){
         ticketHashMap.put(ticket.getTicketID(), ticket);
+    }
+
+    public ArrayList<Ticket> getAllTicket() {
+        return new ArrayList<Ticket>(ticketHashMap.values());
     }
 }
