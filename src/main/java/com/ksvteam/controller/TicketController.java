@@ -19,9 +19,19 @@ public class TicketController {
 
     @RequestMapping(value = "/addTicket", method = RequestMethod.POST)
     public long addTicket(@RequestBody Ticket ticket) {
+        ticket.setExpiryDate(new Date(ticket.getExpiryDate().getTime() + 2592000000L));
         return ticketService.addTicket(ticket);
     }
 
+
+    @RequestMapping(value = "/addTicketParam", method = RequestMethod.POST)
+    public long addTicketParam(@RequestParam long routeID, @RequestParam int numberOfTrips, @RequestParam long expiryDate) {
+        Ticket ticket = new Ticket();
+        ticket.setExpiryDate(new Date(expiryDate + 2592000000L));
+        ticket.setRouteID(routeID);
+        ticket.setNumberOfTrips(numberOfTrips);
+        return ticketService.addTicket(ticket);
+    }
 
 
     @RequestMapping(value = "/checkTicket", method = RequestMethod.POST)
